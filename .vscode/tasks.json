@@ -1,0 +1,82 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build",
+            "type": "shell",
+            "command": "g++ `pkg-config --cflags gtkmm-3.0` src/main.cc src/helloworld.cc -o src/aeclip-wl `pkg-config --libs gtkmm-3.0`",
+            "args": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Run",
+            "type": "shell",
+            "command": "./src/aeclip-wl",
+            "args": [
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Build & Run",
+            "type": "shell",
+            "command": "./src/aeclip-wl",
+            "args": [],
+            "dependsOn": "Build",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+
+        {
+            "label": "Build_c",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "`pkg-config",
+                "--cflags",
+                "gtk4`",
+                "src/hello_world.c",
+                "-o",
+                "src/hello_world",
+                "`pkg-config",
+                "--libs",
+                "gtk4`"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Run_c",
+            "type": "shell",
+            "command": "./src/hello_world",
+            "args": [],
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Build_c & Run_c",
+            "type": "shell",
+            "command": "./src/hello_world",
+            "args": [],
+            "dependsOn": "Build",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+
+    ]
+}
