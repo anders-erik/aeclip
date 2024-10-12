@@ -2,6 +2,8 @@
 
 ## Supported platforms
 - Ubuntu 22.04 - GNOME/Wayland
+    - src3 = gtkmm 3.0
+    - src4 = gtkmm 4.0
 
 ## Current functionality
 

@@ -10,4 +10,4 @@
 APT
 - build-essential
 - libgtk-4-dev [100+ MB]
-- libgtkmm-3.0-dev
+- libgtkmm-4.0-dev

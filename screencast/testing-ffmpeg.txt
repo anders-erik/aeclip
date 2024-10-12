@@ -1,0 +1,23 @@
+AUD=2024-10-10_23:15:43_audio.wav
+VID=2024-10-10_23:15:43_video.webm
+OUT=2024-10-10_23:15:43_output.mp4
+
+# ORIGINAL
+ffmpeg -i "$AUD" -i "$VID" -c:v copy -c:a aac -filter_complex "[1:a]adelay=1000|1000[aud]" -map 0:v -map "[aud]" "$OUT"
+# REMOVED FILTER COMPLEX
+ffmpeg -i "$AUD" -i "$VID" -c:v copy -c:a aac -map "[aud]" "$OUT"
+
+# NEW
+# FIX AUDIO
+ffmpeg -i "$AUD" -acodec pcm_s16le -ar 44100 fixed_audio.wav
+# Convert 
+ffmpeg -i "$VID" -i "$AUD" -c:v libx264 -c:a aac -strict experimental "$OUT"
+ffmpeg -i "$VID" -i "$AUD" -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" -c:v libx264 -c:a aac -strict experimental "$OUT"
+
+
+
+2024-10-10_22:55:11_audio.wav
+2024-10-10_22:55:11_video.webm
+2024-10-10_22:55:11_output.mp4
+
+
